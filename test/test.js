@@ -27,9 +27,11 @@ describe('chilexpress', () => {
         expect(err).to.be.null;
         expect(data).to.be.a('object');
         expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
-        expect(data.history[0]).to.include.keys('datetime', 'activity');
-        expect(data.history[0].datetime).to.be.a('date');
-        expect(data.history[0].activity).to.be.a('string');
+        for (let history of data.history) {
+          expect(history).to.include.keys('datetime', 'activity');
+          expect(history.datetime).to.be.a('date');
+          expect(history.activity).to.be.a('string');
+        }
         done();
       });
     });
@@ -38,9 +40,11 @@ describe('chilexpress', () => {
       lib(orderId).then((data) => {
         expect(data).to.be.a('object');
         expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
-        expect(data.history[0]).to.include.keys('datetime', 'activity');
-        expect(data.history[0].datetime).to.be.a('date');
-        expect(data.history[0].activity).to.be.a('string');
+        for (let history of data.history) {
+          expect(history).to.include.keys('datetime', 'activity');
+          expect(history.datetime).to.be.a('date');
+          expect(history.activity).to.be.a('string');
+        }
         done();
       }).fail((err) => {
         expect(err).to.be.null;

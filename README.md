@@ -17,7 +17,7 @@ npm i -S chilexpress
 
 ## Use
 
-```node
+```js
 import chilexpress from 'chilexpress';
 
 const orderId = '111111111111';

@@ -13,7 +13,7 @@ export default (orderId, callback) => {
     response.on('data', (chunk) => body += chunk);
 
     response.on('end', () => {
-      const $ = cheerio.load(body);
+      const $ = cheerio.load(body, {decodeEntities: false});
       const tbl = $('.addresses > tbody').get().map(row => {
         return $(row).find('td').get().map(cell => $(cell).html());
       });
