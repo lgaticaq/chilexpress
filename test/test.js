@@ -26,7 +26,7 @@ describe('chilexpress', () => {
       lib(orderId, (err, data) => {
         expect(err).to.be.null;
         expect(data).to.be.a('object');
-        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
+        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'isDeliveried', 'history');
         for (let history of data.history) {
           expect(history).to.include.keys('datetime', 'activity');
           expect(history.datetime).to.be.a('date');
@@ -39,7 +39,7 @@ describe('chilexpress', () => {
     it('should return a array statuses (promise)', (done) => {
       lib(orderId).then((data) => {
         expect(data).to.be.a('object');
-        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
+        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'isDeliveried', 'history');
         for (let history of data.history) {
           expect(history).to.include.keys('datetime', 'activity');
           expect(history.datetime).to.be.a('date');

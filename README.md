@@ -24,12 +24,12 @@ const orderId = '111111111111';
 
 // Promise
 chilexpress(orderId)
-  .then(data => console.log(data)) // {orderId: '111111111111', product: 'Encomienda', service: 'Dia Habil Siguiente', status: 'En Proceso De Despacho', history: [{datetime: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC), activity: 'En Proceso De Despacho'}, ...]}
+  .then(data => console.log(data)) // {orderId: '111111111111', product: 'Encomienda', service: 'Dia Habil Siguiente', status: 'En Proceso De Despacho', isDeliveried: false, history: [{datetime: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC), activity: 'En Proceso De Despacho'}, ...]}
   .fail(err => console.error(err)); // [Error: Not found order id]
 
 // Callback
 chilexpress(orderId, (err, data) => {
   if (err) return console.error(err); // [Error: Not found order id]
-  console.log(data); // {orderId: '111111111111', product: 'Encomienda', service: 'Dia Habil Siguiente', status: 'En Proceso De Despacho', history: [{datetime: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC), activity: 'En Proceso De Despacho'}, ...]}
+  console.log(data); // {orderId: '111111111111', product: 'Encomienda', service: 'Dia Habil Siguiente', status: 'En Proceso De Despacho', isDeliveried: false, history: [{datetime: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC), activity: 'En Proceso De Despacho'}, ...]}
 });
 ```
