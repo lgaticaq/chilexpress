@@ -4,6 +4,7 @@
   "description": "Check shipping status in chilexpress",
   "main": "lib",
   "scripts": {
+    "prepublish": "npm run build -s",
     "prebuild": "npm run lint -s && npm run clean -s",
     "build": "babel src --out-dir lib --source-maps",
     "lint": "eslint src",
