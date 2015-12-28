@@ -20,8 +20,19 @@ export default (orderId, callback) => {
       if (tbl.length === 0) {
         deferred.reject(new Error('Not found order id'));
       } else {
+        const resume = $('.wigdet-content > ul > li > ul > li').get().map(i => {
+          const h = $(i);
+          h.find('strong').remove();
+          return h.html();
+        });
+        const data = {
+          orderId: resume[0],
+          product: resume[1],
+          service: resume[2],
+          status: resume[3]
+        };
         const pattern = /(\d{2})\/(\d{2})\/(\d{4})(\d{2})\:(\d{2})/;
-        const data = tbl.map(x => {
+        data.history = tbl.map(x => {
           const st = `${x[0]}${x[1]}`;
           return {
             datetime: new Date(st.replace(pattern,'$3-$2-$1T$4:$5-03:00')),

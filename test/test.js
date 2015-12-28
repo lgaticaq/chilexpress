@@ -25,20 +25,22 @@ describe('chilexpress', () => {
     it('should return a array statuses (callback)', (done) => {
       lib(orderId, (err, data) => {
         expect(err).to.be.null;
-        expect(data).to.be.a('array');
-        expect(data[0]).to.include.keys('datetime', 'activity');
-        expect(data[0].datetime).to.be.a('date');
-        expect(data[0].activity).to.be.a('string');
+        expect(data).to.be.a('object');
+        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
+        expect(data.history[0]).to.include.keys('datetime', 'activity');
+        expect(data.history[0].datetime).to.be.a('date');
+        expect(data.history[0].activity).to.be.a('string');
         done();
       });
     });
 
     it('should return a array statuses (promise)', (done) => {
       lib(orderId).then((data) => {
-        expect(data).to.be.a('array');
-        expect(data[0]).to.include.keys('datetime', 'activity');
-        expect(data[0].datetime).to.be.a('date');
-        expect(data[0].activity).to.be.a('string');
+        expect(data).to.be.a('object');
+        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'history');
+        expect(data.history[0]).to.include.keys('datetime', 'activity');
+        expect(data.history[0].datetime).to.be.a('date');
+        expect(data.history[0].activity).to.be.a('string');
         done();
       }).fail((err) => {
         expect(err).to.be.null;
