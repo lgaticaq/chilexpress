@@ -17,6 +17,7 @@ npm i -S chilexpress
 
 ## Use
 
+[Try on Tonic](https://tonicdev.com/npm/chilexpress)
 ```js
 import chilexpress from 'chilexpress';
 
