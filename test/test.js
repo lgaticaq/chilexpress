@@ -1,18 +1,18 @@
 'use strict';
-/*eslint no-console: 0*/
-import path from 'path';
 
-import {expect} from 'chai';
-import nock from 'nock';
+const path = require('path');
 
-import lib from '../lib';
+const expect = require('chai').expect;
+const nock = require('nock');
+
+const lib = require('../src');
 
 describe('chilexpress', () => {
 
-
   describe('valid order id', () => {
 
-    const orderId = '111111111111';
+    const orderId = '11111111111';
+    const transportId = '22222222222';
 
     beforeEach(() => {
       nock.disableNetConnect();
@@ -20,33 +20,22 @@ describe('chilexpress', () => {
         .get('/Views/ChilexpressCL/Resultado-busqueda.aspx')
         .query({DATA: orderId})
         .replyWithFile(200, path.join(__dirname, 'valid.html'));
+      nock('https://www.chilexpress.cl')
+        .post('/Views/ChilexpressCL/Resultado-busqueda.aspx/ObtieneTrakingWEBM', JSON.stringify({ot: transportId, Filas: 0, Hoja: 0}))
+        .replyWithFile(200, path.join(__dirname, 'valid2.html'));
     });
 
-    it('should return a array statuses (callback)', (done) => {
-      lib(orderId, (err, data) => {
-        expect(err).to.be.null;
+    it('should return a array statuses', done => {
+      lib(orderId).then(data => {
         expect(data).to.be.a('object');
-        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'isDeliveried', 'history');
+        expect(data).to.include.keys('orderId', 'transportId', 'product', 'service', 'status', 'isDeliveried', 'history');
         for (let history of data.history) {
           expect(history).to.include.keys('datetime', 'activity');
           expect(history.datetime).to.be.a('date');
           expect(history.activity).to.be.a('string');
         }
         done();
-      });
-    });
-
-    it('should return a array statuses (promise)', (done) => {
-      lib(orderId).then((data) => {
-        expect(data).to.be.a('object');
-        expect(data).to.include.keys('orderId', 'product', 'service', 'status', 'isDeliveried', 'history');
-        for (let history of data.history) {
-          expect(history).to.include.keys('datetime', 'activity');
-          expect(history.datetime).to.be.a('date');
-          expect(history.activity).to.be.a('string');
-        }
-        done();
-      }).fail((err) => {
+      }).catch(err => {
         expect(err).to.be.null;
         done();
       });
@@ -65,19 +54,11 @@ describe('chilexpress', () => {
         .replyWithFile(200, path.join(__dirname, 'invalid.html'));
     });
 
-    it('should return a error (callback)', (done) => {
-      lib(orderId, (err, data) => {
-        expect(err).to.eql(new Error('Not found order id'));
-        expect(data).to.be.undefined;
-        done();
-      });
-    });
-
-    it('should return a error (promise)', (done) => {
+    it('should return a error', done => {
       lib(orderId).then((data) => {
         expect(data).to.be.undefined;
         done();
-      }).fail((err) => {
+      }).catch(err => {
         expect(err).to.eql(new Error('Not found order id'));
         done();
       });
