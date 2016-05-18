@@ -1,6 +1,6 @@
 {
   "name": "chilexpress",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Check shipping status in chilexpress",
   "main": "src",
   "scripts": {
