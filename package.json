@@ -4,9 +4,12 @@
   "description": "Check shipping status in chilexpress",
   "main": "src",
   "scripts": {
-    "pretest": "eslint src",
+    "prepublish": "npm run lint -s",
+    "lint": "eslint .",
+    "pretest": "npm run lint -s",
     "test": "istanbul cover _mocha",
-    "coveralls": "coveralls < coverage/lcov.info"
+    "coveralls": "coveralls < coverage/lcov.info",
+    "codeclimate": "codeclimate-test-reporter < coverage/lcov.info"
   },
   "engines": {
     "node": ">=4"
@@ -26,11 +29,11 @@
   "homepage": "https://github.com/lgaticaq/chilexpress#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
-    "moment": "^2.13.0",
     "request-promise": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "codeclimate-test-reporter": "^0.3.1",
     "coveralls": "^2.11.9",
     "eslint": "^2.10.1",
     "istanbul": "^0.4.3",
