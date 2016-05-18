@@ -9,7 +9,7 @@ module.exports = orderId => {
     qs: {DATA: orderId},
     json: true,
     rejectUnauthorized: false,
-    transform: cheerio.load
+    transform: (body) => cheerio.load(body, {decodeEntities: false})
   };
   return rp(options).then($ => {
     const tbl = $('.addresses > tbody').get().map(row => {
