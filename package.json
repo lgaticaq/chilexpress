@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/lgaticaq/chilexpress#readme",
   "dependencies": {
-    "cheerio": "^0.20.0",
+    "cheerio": "^0.22.0",
     "request-promise": "^4.1.0"
   },
   "devDependencies": {
