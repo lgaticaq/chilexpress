@@ -1,3 +1,9 @@
+#### 2.0.5 (2016-12-18)
+
+##### Bug Fixes
+
+* **datetime:** Fix timezone ([a7256ee5](https://github.com/lgaticaq/chilexpress/commit/a7256ee5f9d40781e8d383e0a94b4fe1c17aa167))
+
 #### 2.0.4 (2016-12-18)
 
 ##### Chores
