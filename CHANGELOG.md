@@ -1,3 +1,19 @@
+#### 2.0.4 (2016-12-18)
+
+##### Chores
+
+* **travis:** Update node version ([d1c1b4c5](https://github.com/lgaticaq/chilexpress/commit/d1c1b4c5ffe67174ec1620433ef7fbeded86805c))
+* **nvm:** Update node version ([2c1c6325](https://github.com/lgaticaq/chilexpress/commit/2c1c6325eb0b6465640c9cff706e12b9dbc3d6a4))
+* **npm:** Update ignore ([ef13b6b7](https://github.com/lgaticaq/chilexpress/commit/ef13b6b7091665bd3e6b2d07a9b7077201cc5854))
+* **package:**
+  * Add yarn.lock ([5b04a369](https://github.com/lgaticaq/chilexpress/commit/5b04a36924681cbde8722d150dd022942adcc8b1))
+  * Update dependencies ([4bfcbd36](https://github.com/lgaticaq/chilexpress/commit/4bfcbd366c955f207957e4ce1f3accb421646bef))
+  * Replace request-promise with https ([54f43946](https://github.com/lgaticaq/chilexpress/commit/54f43946e36e72b0c75ef9d6d9d7ae0f332bc7cc))
+  * update nock to version 9.0.0 ([9717e425](https://github.com/lgaticaq/chilexpress/commit/9717e42594ec28460499f5287051fe7b8fb4a5b5))
+  * update codeclimate-test-reporter to version 0.4.0 ([962cb33c](https://github.com/lgaticaq/chilexpress/commit/962cb33c1318a4e3435a7865419678f330373965))
+  * update cheerio to version 0.22.0 ([d8c4c911](https://github.com/lgaticaq/chilexpress/commit/d8c4c9110d25980e005061dcb205cc7d8a2e3465))
+* **tests:** Complete tests ([e979d2a0](https://github.com/lgaticaq/chilexpress/commit/e979d2a09ae952511a42f83d1ee9c4e3875f4269))
+
 #### 2.0.3 (2016-8-2)
 
 ##### Chores
