@@ -44,13 +44,13 @@ module.exports = orderId => {
               });
               data.receptor = {rut: download[0], name: download[3]};
               const dst = `${download[1]}${download[2]}`;
-              data.delivery = new Date(dst.replace(pattern,'$3-$2-$1T$4:$5:00-04:00'));
+              data.delivery = new Date(dst.replace(pattern,'$3-$2-$1T$4:$5:00-03:00'));
               data.isDeliveried = true;
             }
             data.history = tbl.map(x => {
               const st = `${x[0]}${x[1]}`;
               return {
-                datetime: new Date(st.replace(pattern,'$3-$2-$1T$4:$5:00-04:00')),
+                datetime: new Date(st.replace(pattern,'$3-$2-$1T$4:$5:00-03:00')),
                 activity: x[2]
               };
             });
