@@ -1,3 +1,16 @@
+#### 2.0.6 (2017-3-14)
+
+##### Chores
+
+* **package:**
+  * Upgrade eslint to v3.17.1 ([2762ab69](https://github.com/lgaticaq/chilexpress/commit/2762ab699d2d3182fe5460e3166f269402ecfde9))
+  * Upgrade coveralls to v2.12.0 ([302aa916](https://github.com/lgaticaq/chilexpress/commit/302aa9164ba0b563a776f6caaabc721aadd6ef9f))
+  * Upgrade codeclimate-test-reporter to v0.4.1 ([036b2655](https://github.com/lgaticaq/chilexpress/commit/036b26550b6005370bb3c068e706477d7ceb78fa))
+  * update nock to version 9.0.9 ([dc11f6f7](https://github.com/lgaticaq/chilexpress/commit/dc11f6f7815dfd2a55fbfd83e3593efcf17bbb16))
+  * Update eslint to v3.14.1 ([8ad8317f](https://github.com/lgaticaq/chilexpress/commit/8ad8317fe57db10ccfa42547ba2b29d9a1e93278))
+* **yarn:** Update lock ([8a75df8d](https://github.com/lgaticaq/chilexpress/commit/8a75df8d4516520dcf553377a6ca95cdcc6f5dda))
+* **travis:** Add cache yarn ([b9befe55](https://github.com/lgaticaq/chilexpress/commit/b9befe55562ad5f3b9944276d78817072633e1a0))
+
 #### 2.0.5 (2016-12-18)
 
 ##### Bug Fixes
