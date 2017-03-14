@@ -5,8 +5,13 @@ const cheerio = require('cheerio');
 
 module.exports = orderId => {
   return new Promise((resolve, reject) => {
-    const url = `https://www.chilexpress.cl/Views/ChilexpressCL/Resultado-busqueda.aspx?DATA=${orderId}`;
-    https.get(url, res => {
+    const opts = {
+      hostname: 'www.chilexpress.cl',
+      path: `/Views/ChilexpressCL/Resultado-busqueda.aspx?DATA=${orderId}`,
+      port: 443,
+      ciphers: 'ECDHE-RSA-AES256-SHA:AES256-SHA:RC4-SHA:RC4:HIGH:!MD5:!aNULL:!EDH:!AESGCM'
+    };
+    https.get(opts, res => {
       if (res.statusCode !== 200) {
         res.resume();
         reject(new Error(`Request Failed. Status Code: ${res.statusCode}`));
