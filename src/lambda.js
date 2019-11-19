@@ -1,5 +1,5 @@
 const debug = require('debug')('chilexpress')
-const puppeteer = require('puppeteer')
+const chromium = require('chrome-aws-lambda')
 const chilexpress = require('./chilexpress')
 
 /**
@@ -12,7 +12,12 @@ const chilexpress = require('./chilexpress')
  * const result = await chilexpress(orderId)
  */
 module.exports = async orderId => {
-  const browser = await puppeteer.launch()
+  const browser = await chromium.puppeteer.launch({
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath,
+    headless: chromium.headless
+  })
   const result = await chilexpress(browser, orderId)
   debug('close browser')
   await browser.close()

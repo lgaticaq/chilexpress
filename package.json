@@ -4,16 +4,13 @@
   "description": "Check shipping status in chilexpress",
   "main": "src",
   "scripts": {
-    "start": "node src",
-    "lint": "eslint .",
-    "format": "prettier-standard 'src/**/*.js' 'test/**/*.js'",
-    "test": "istanbul cover _mocha",
-    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags && npm publish",
-    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags && npm publish",
-    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags && npm publish"
+    "lint": "eslint . --fix",
+    "format": "prettier-standard '{src,test}/**/*.js'",
+    "ts-compile-check": "tsc -p tsconfig.json --noEmit",
+    "test": "echo \"no tests\""
   },
   "engines": {
-    "node": ">=6"
+    "node": ">=12"
   },
   "repository": {
     "type": "git",
@@ -29,39 +26,38 @@
   },
   "homepage": "https://github.com/lgaticaq/chilexpress#readme",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.1"
+    "chrome-aws-lambda": "^2.0.0",
+    "debug": "4.1.1",
+    "puppeteer": "^2.0.0",
+    "puppeteer-core": "^2.0.0"
   },
   "devDependencies": {
-    "chai": "4.2.0",
+    "@commitlint/cli": "8.2.0",
+    "@commitlint/config-conventional": "8.2.0",
+    "@eclass/eslint-config": "1.1.3",
+    "@eclass/semantic-release-npm-github-config": "3.0.0",
+    "@semantic-release/changelog": "3.0.5",
+    "@semantic-release/git": "7.0.18",
+    "@types/debug": "4.1.5",
+    "@types/node": "12.12.11",
     "eslint": "6.6.0",
-    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-array-func": "3.1.3",
+    "eslint-plugin-eslint-comments": "3.1.2",
     "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsdoc": "18.1.4",
     "eslint-plugin-node": "10.0.0",
     "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-security": "1.4.0",
+    "eslint-plugin-sonarjs": "0.5.0",
     "eslint-plugin-standard": "4.0.1",
-    "generate-changelog": "1.8.0",
     "husky": "3.1.0",
-    "istanbul": "0.4.5",
     "lint-staged": "9.4.3",
-    "mocha": "6.2.2",
-    "nock": "11.7.0",
-    "prettier-standard": "15.0.1"
+    "prettier-standard": "15.0.1",
+    "semantic-release": "15.13.31",
+    "typescript": "3.7.2"
   },
   "eslintConfig": {
-    "extends": "standard",
-    "parserOptions": {
-      "ecmaVersion": 2017
-    },
-    "env": {
-      "node": true,
-      "mocha": true,
-      "es6": true
-    },
-    "rules": {
-      "no-console": [
-        "error"
-      ]
-    }
+    "extends": "@eclass"
   },
   "eslintIgnore": [
     "coverage",
@@ -69,26 +65,30 @@
   ],
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
-    "src/**/*.js": [
-      "eslint --fix",
-      "prettier-standard",
-      "git add"
-    ],
-    "test/**/*.js": [
+    "{src,test}/**/*.js": [
       "eslint --fix",
       "prettier-standard",
       "git add"
     ]
   },
   "tonicExampleFilename": "example.js",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
   "renovate": {
     "automerge": "minor",
     "extends": [
-      ":library"
+      "config:js-lib"
     ]
+  },
+  "release": {
+    "extends": "@eclass/semantic-release-npm-github-config"
   }
 }

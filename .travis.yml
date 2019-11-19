@@ -1,10 +1,24 @@
 language: node_js
+cache:
+  directories:
+    - ~/.npm
 node_js:
-  - "6"
-  - "8"
+  - "12.13.0"
 notifications:
   email: false
-after_success:
-  - npm i -g coveralls codeclimate-test-reporter
-  - coveralls < coverage/lcov.info
-  - codeclimate-test-reporter < coverage/lcov.info
+stages:
+  - lint
+  - name: deploy
+    if: branch = master
+jobs:
+  include:
+    - stage: lint
+      name: eslint
+      script: npx eslint .
+    - stage: lint
+      name: commitlint
+      before_script:
+        - npm i -g @commitlint/travis-cli
+      script: commitlint-travis
+    - stage: deploy
+      script: npx semantic-release
