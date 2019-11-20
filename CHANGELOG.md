@@ -1,3 +1,68 @@
+# [3.0.0](https://github.com/lgaticaq/chilexpress/compare/v2.0.6...v3.0.0) (2019-11-20)
+
+
+### Bug Fixes
+
+* **linter:** Fix Arrow function should not return assignment ([a73d689](https://github.com/lgaticaq/chilexpress/commit/a73d689fc50e0003d9c31ab2d3045a36294ef9a6))
+* **package:** update cheerio to version 1.0.0-rc.1 ([574c6d4](https://github.com/lgaticaq/chilexpress/commit/574c6d4537807f0fa4294a14c3d8727c0e916500))
+
+
+### Features
+
+* migrate to puppeteer ([2709bd7](https://github.com/lgaticaq/chilexpress/commit/2709bd7d388385e8398beb93279979ebb542ef37))
+
+
+### BREAKING CHANGES
+
+* new output data
+
+Before:
+```js
+chilexpress('111111111111').then(console.log)
+/*
+{
+  orderId: '111111111111',
+  product: 'Encomienda',
+  service: 'Dia Habil Siguiente',
+  status: 'En Proceso De Despacho',
+  isDeliveried: false,
+  history: [
+    {
+      datetime: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC),
+      activity: 'En Proceso De Despacho'
+    }
+  ]
+}
+*/
+```
+
+After:
+```js
+chilexpress('111111111111').then(console.log);
+/*
+{
+  status: 'En Proceso De Despacho',
+  delivery: {
+    name: 'XXX XXX',
+    rut: '0',
+    date: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC),
+    signature: ''
+  },
+  history: [
+    {
+      date: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC),
+      activity: 'En Proceso De Despacho'
+    }
+  ],
+  shipping: {
+    product: 'Encomienda',
+    service: 'Dia Habil Siguiente',
+    date: Mon Dec 28 2015 11:31:00 GMT+0000 (UTC)
+  }
+}
+*/
+```
+
 #### 2.0.6 (2017-3-14)
 
 ##### Chores
