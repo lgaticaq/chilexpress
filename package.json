@@ -27,7 +27,7 @@
   "homepage": "https://github.com/lgaticaq/chilexpress#readme",
   "dependencies": {
     "chrome-aws-lambda": "^3.0.0",
-    "debug": "4.1.1",
+    "debug": "4.2.0",
     "puppeteer": "^2.0.0",
     "puppeteer-core": "^2.0.0"
   },
