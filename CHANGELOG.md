@@ -1,3 +1,11 @@
+## [3.0.3](https://github.com/lgaticaq/chilexpress/compare/v3.0.2...v3.0.3) (2020-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency debug to v4.3.0 ([9b03414](https://github.com/lgaticaq/chilexpress/commit/9b03414dbc3a73480a6d58caf4e7f072e7c6f972))
+* **deps:** update dependency debug to v4.3.1 ([c7b5377](https://github.com/lgaticaq/chilexpress/commit/c7b537783f9b1989b85ddb3f680802ed76c0056d))
+
 ## [3.0.2](https://github.com/lgaticaq/chilexpress/compare/v3.0.1...v3.0.2) (2020-09-19)
 
 
