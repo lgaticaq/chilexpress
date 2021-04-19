@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/lgaticaq/chilexpress/compare/v3.0.3...v3.0.4) (2021-04-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency chrome-aws-lambda to ^3.1.1 ([e5a5f8a](https://github.com/lgaticaq/chilexpress/commit/e5a5f8a389b374ab2c1f4d5665eb65db83c52235))
+
 ## [3.0.3](https://github.com/lgaticaq/chilexpress/compare/v3.0.2...v3.0.3) (2020-11-19)
 
 
